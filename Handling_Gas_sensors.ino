@@ -1,5 +1,8 @@
+//This code is developed to sample sensor data that includes MQ135, MQ137, Gravity Infrared CO2, Accelerometer, Magnetometer, and electret microphone.
+//We turn on gas sensors once in a while using TPS61023. Then we wait for 5 minutes so the outputs of the sensors become stable and then we sample it.
+
 // The load resistance on the board
-#define RLOAD 22.0
+#define RLOAD 22.0 //MQ135
 #include "MQ135.h"
 #include <SPI.h>
 #include <Wire.h>
@@ -7,11 +10,11 @@
 #include <Adafruit_LSM303_U.h>
 #include "DFRobot_SHT20.h"
 #include <SD.h>
-#define RL 47  //The value of resistor RL is 47K
-#define m -0.263 //Enter calculated Slope 
-#define b 0.42 //Enter calculated intercept
-#define Ro 37 //Enter found Ro value
-#define MQ_sensor A0 //Sensor is connected to A4
+#define RL 47  //The value of resistor RL is 47K (MQ137)
+#define m -0.263 //Enter calculated Slope (MQ137)
+#define b 0.42 //Enter calculated intercept (MQ137)
+#define Ro 37 //Enter found Ro value (MQ137)
+#define MQ_sensor A0 //Sensor is connected to A0
 #define cardSelect 4
 MQ135 gasSensor = MQ135(A1);
 String delim = "," ;
@@ -34,9 +37,9 @@ DFRobot_SHT20    sht20;
 unsigned long myTime;
 void setup() {
 
-  pinMode(19, OUTPUT);    // sets the digital pin 13 as output
+  pinMode(9, OUTPUT);    // sets the digital pin 13 as output
   pinMode(12, OUTPUT);
-  digitalWrite(19, LOW);
+  digitalWrite(9, LOW);
   Serial.begin(9600);
   pinMode(sensorPin, INPUT);
   mag.enableAutoRange(true);
@@ -116,7 +119,7 @@ void loop() {
    File dataFile = SD.open("datalog.txt", FILE_WRITE);
 
   if (millis() - lastGasTime >= gasInterval) {
-  digitalWrite(19, HIGH); // sets the digital pin 13 on
+  digitalWrite(9, HIGH); // sets the digital pin 13 on
   
     if (dataFile) {
 
@@ -156,7 +159,7 @@ void loop() {
       ppm1av = ppm1av/20;
       concentrationav = concentrationav/50;       
       
-        digitalWrite(19, LOW);
+        digitalWrite(9, LOW);
             if (dataFile) {
 
     dataFile.println(myTime + delim +event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd+ delim + ppmav + delim + ppm1av +delim +concentrationav);
@@ -178,18 +181,6 @@ void loop() {
       Serial.println(myTime + delim +event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd);
      }
   
-  //Serial.print ("raw = ");
-  //Serial.println (val);
- // float zero = gasSensor.getRZero();
- // Serial.print ("rzero: ");
-  //Serial.println (zero);
- // Serial.print ("mq135: ");
- // Serial.println (ppm);
- // Serial.print ("mq137: ");
- // Serial.println (ppm1);
- // Serial.print(concentration);
- // Serial.println("ppm");
- // delay(200);
 }
 else {
       if (dataFile) {
