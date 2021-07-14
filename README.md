@@ -8,7 +8,8 @@ The above equation computes the voltage that we feed to the microcontroller. Vou
 Below circuit shows how you can use multiple analog 5V sensors using a 3.3V microcontroller. The components are TPS61023 (Adafruit MiniBoost 5V @ 1A), MQ137 and MQ135 Gas Sensors, Gravity Infrared CO2 Sensor, LSM303 Motion sensor, 3.7V Lipo Battery, four resistors and Adafruit Feather M0 Adalogger. We can turn the gas sensors on by activating TPS61023 which can be done through pin 12. We utilized TPS61023 like a Mosfet transistor which is also capable of boosting the voltage up to 5V. 
 
 
-![girhubv3](https://user-images.githubusercontent.com/45086751/125665012-7fd2879e-12d1-4b00-a14e-72767db8391d.jpg)
+![githubv4](https://user-images.githubusercontent.com/45086751/125672955-8b26df32-c16b-4bf8-b240-8143354b2fd6.jpg)
+
 
 
 
