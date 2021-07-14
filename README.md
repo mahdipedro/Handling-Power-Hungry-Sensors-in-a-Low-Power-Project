@@ -7,7 +7,8 @@ Another challenge is to shift 5V output of the sensors to 3.3V for the microcont
 
 The above equation computes the voltage that we feed to the microcontroller. Vout will be 3.3V if Vin(sensor output) is equal to 5V. Below circuit shows how you can use an analog 5V sensor using a 3.3 microcontroller. The components are TPS61023 (Adafruit MiniBoost 5V @ 1A), MQ137 Gas Sensors, 3.7V Lipo Battery, two resistors and Adafruit Feather M0 Adalogger. We can turn the MQ17 on by activating TPS61023 which can be done through pin 9. We utilized TPS61023 like a Mosfet transistor which is also capable of boosting the voltage up to 5V.
 
-![github_boost](https://user-images.githubusercontent.com/45086751/125550456-313f0950-1ec4-45cb-9d31-1a96616b366c.jpg)
+
+![girhubv3](https://user-images.githubusercontent.com/45086751/125665012-7fd2879e-12d1-4b00-a14e-72767db8391d.jpg)
 
 
 
