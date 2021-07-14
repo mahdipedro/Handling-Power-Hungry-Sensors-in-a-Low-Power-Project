@@ -130,11 +130,7 @@ void loop() {
   Serial.println(myTime + delim + event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd);
   delay(100);
     if (millis() - lastGasTime1 >= gasInterval1) {
-      float ppmav =0;
-      float ppm1av =0;
-      float concentrationav =0;
       
-      for (int p =0; p < 21; p++){
         int sensorValue = analogRead(sensorIn);
         float voltage = sensorValue*(3300/1024.0);
         int voltage_diference=voltage-400;
@@ -152,21 +148,16 @@ void loop() {
         
         //val = analogRead(A1);
         float ppm = gasSensor.getPPM();
-        ppm1av = ppm1+ ppmav;
-        ppmav = ppm + ppmav;
-        concentrationav = concentrationav + concentration;
-      }
-      ppmav = ppmav/20;
-      ppm1av = ppm1av/20;
-      concentrationav = concentrationav/50;       
+
+      
       
         digitalWrite(9, LOW);
             if (dataFile) {
 
-    dataFile.println(myTime + delim +event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd+ delim + ppmav + delim + ppm1av +delim +concentrationav);
+    dataFile.println(myTime + delim +event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd+ delim + ppm + delim + ppm1 +delim +concentration);
 
   }
-        Serial.println(myTime + delim +event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd + delim + ppmav + delim + ppm1av +delim +concentrationav);
+        Serial.println(myTime + delim +event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd + delim + ppm + delim + ppm1 +delim +concentration);
         
         delay(100);
         lastGasTime1 = millis();
