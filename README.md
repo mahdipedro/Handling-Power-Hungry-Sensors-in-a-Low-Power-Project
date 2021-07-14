@@ -5,12 +5,11 @@ Another challenge is to shift 5V output of the sensors to 3.3V for the microcont
 ![divider](https://user-images.githubusercontent.com/45086751/125552094-addf8c34-e63d-4cb5-a948-1256d4dd0c2f.JPG)
 
 The above equation computes the voltage that we feed to the microcontroller. Vout will be 3.3V if Vin(sensor output) is equal to 5V. However, we need to check out the datasheet of the sensors to know the exact output range of each sensor. For instance, While the infrared CO2 sensor gets 5V power supply, it generates 0.4-2V analog value, corresponding to 0~5000 ppm. Therefore, we do not need a voltage divider for this sensor and we can just directly connect the output pin to the 3.3V microcontroller.
-Below circuit shows how you can use multiple analog 5V sensors using a 3.3V microcontroller. The components are TPS61023 (Adafruit MiniBoost 5V @ 1A), MQ137 and MQ135 Gas Sensors, Gravity Infrared CO2 Sensor, LSM303 Motion sensor, 3.7V Lipo Battery, four resistors and Adafruit Feather M0 Adalogger. We can turn the gas sensors on by activating TPS61023 which can be done through pin 12. We utilized TPS61023 like a Mosfet transistor which is also capable of boosting the voltage up to 5V. 
+Below circuit shows how you can use multiple analog 5V sensors using a 3.3V microcontroller. The components are TPS61023 (Adafruit MiniBoost 5V @ 1A), MQ137 and MQ135 Gas Sensors, Gravity Infrared CO2 Sensor, LSM303 Motion sensor, SHT20 I2C temperature sensor, 3.7V Lipo Battery, four resistors and Adafruit Feather M0 Adalogger. We can turn the gas sensors on by activating TPS61023 which can be done through pin 12. We utilized TPS61023 like a Mosfet transistor which is also capable of boosting the voltage up to 5V. 
 
 
 ![githubv4](https://user-images.githubusercontent.com/45086751/125672955-8b26df32-c16b-4bf8-b240-8143354b2fd6.jpg)
 
 
 
-
-
+The developed program reads and stores the data of motion and temperature sensors continuously. We read the gas sensors once in a while by using digital pin 12 which enables TPS61023 chip. We turn on the gas sensors and wait for 5 minutes (Gas sensors need this time so their output could become stable) and then we store their values.  
