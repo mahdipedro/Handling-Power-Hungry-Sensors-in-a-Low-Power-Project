@@ -3,7 +3,8 @@ Most people use 3.3v microcontrollers and they still want to use 5v devices such
 Another challenge is to shift 5V output of the sensors to 3.3V for the microcontroller. The outcome of these sensors are analog signals between 0-5V. Therefore, we need a voltage divider to shift this to 0-3.3V. ![divider](https://user-images.githubusercontent.com/45086751/125549324-af4874bc-f112-4087-8662-1e00387495b4.JPG)
 
 
-The above equation computes the voltage that we feed to the microcontroller. Vout will be 3.3V if Vin(sensor output) is equal to 5V. Below circuit shows how you can use an analog 5V sensor using a 3.3 microcontroller. The components are TPS61023 (Adafruit MiniBoost 5V @ 1A), MQ137 Gas Sensors, 3.7 Lipo Battery, two resistors![github_booster](https://user-images.githubusercontent.com/45086751/125549670-8db69450-4d72-49ce-8af5-1b41910b84af.jpg)
+The above equation computes the voltage that we feed to the microcontroller. Vout will be 3.3V if Vin(sensor output) is equal to 5V. Below circuit shows how you can use an analog 5V sensor using a 3.3 microcontroller. The components are TPS61023 (Adafruit MiniBoost 5V @ 1A), MQ137 Gas Sensors, 3.7 Lipo Battery, two resistors and Adafruit Feather M0 Adalogger. 
+![github_booster](https://user-images.githubusercontent.com/45086751/125549670-8db69450-4d72-49ce-8af5-1b41910b84af.jpg)
 
 
 
