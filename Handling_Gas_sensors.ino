@@ -1,5 +1,6 @@
 //This code is developed to sample sensor data that includes MQ135, MQ137, Gravity Infrared CO2, Accelerometer, Magnetometer, and electret microphone.
 //We turn on gas sensors once in a while using TPS61023. Then we wait for 5 minutes so the outputs of the sensors become stable and then we sample it.
+//Sampled data stroed into the SD card and it can also be observed through serial monitor.
 
 // The load resistance on the board
 #define RLOAD 22.0 //MQ135
