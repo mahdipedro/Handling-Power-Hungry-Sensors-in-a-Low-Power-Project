@@ -40,7 +40,7 @@ void setup() {
 
   pinMode(9, OUTPUT);    // sets the digital pin 13 as output
   pinMode(12, OUTPUT);
-  digitalWrite(9, LOW);
+  digitalWrite(12, LOW);
   Serial.begin(9600);
   pinMode(sensorPin, INPUT);
   mag.enableAutoRange(true);
@@ -120,7 +120,7 @@ void loop() {
    File dataFile = SD.open("datalog.txt", FILE_WRITE);
 
   if (millis() - lastGasTime >= gasInterval) {
-  digitalWrite(9, HIGH); // sets the digital pin 13 on
+  digitalWrite(12, HIGH); // sets the digital pin 13 on
   
     if (dataFile) {
 
@@ -151,7 +151,7 @@ void loop() {
 
       
       
-        digitalWrite(9, LOW);
+        digitalWrite(12, LOW);
             if (dataFile) {
 
     dataFile.println(myTime + delim +event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd+ delim + ppm + delim + ppm1 +delim +concentration);
