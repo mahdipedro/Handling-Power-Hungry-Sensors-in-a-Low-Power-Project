@@ -1,4 +1,6 @@
-// The load resistance on the board
+//this code is developed to read the values of MQ135, MQ137, Gravity Infrared CO2, Accelerometer, Magnetometer, electret microphone. The system reads the value of the gas sensors once in a while by turning on TPS61023.
+//Sensor data is storing into the SD card. It can also be observed through serial monitor.
+// The load resistance on the board for MQ135
 #define RLOAD 22.0
 #include "MQ135.h"
 #include <SPI.h>
@@ -7,12 +9,12 @@
 #include <Adafruit_LSM303_U.h>
 #include "DFRobot_SHT20.h"
 #include <SD.h>
-#define RL 47  //The value of resistor RL is 47K
-#define m -0.263 //Enter calculated Slope 
-#define b 0.42 //Enter calculated intercept
-#define Ro 37 //Enter found Ro value
-#define MQ_sensor A0 //Sensor is connected to A4
-#define cardSelect 4
+#define RL 47  //The value of resistor RL is 47K (Mq137)
+#define m -0.263 //Enter calculated Slope (Mq137)
+#define b 0.42 //Enter calculated intercept (Mq137)
+#define Ro 37 //Enter found Ro value (Mq137)
+#define MQ_sensor A0 //Sensor is connected to A0
+#define cardSelect 4 
 MQ135 gasSensor = MQ135(A1);
 String delim = "," ;
 int sensorIn = A4;
@@ -34,9 +36,9 @@ DFRobot_SHT20    sht20;
 unsigned long myTime;
 void setup() {
 
-  pinMode(19, OUTPUT);    // sets the digital pin 13 as output
+  pinMode(9, OUTPUT);    // sets the digital pin 13 as output
   pinMode(12, OUTPUT);
-  digitalWrite(19, LOW);
+  digitalWrite(9, LOW);
   Serial.begin(9600);
   pinMode(sensorPin, INPUT);
   mag.enableAutoRange(true);
@@ -116,7 +118,7 @@ void loop() {
    File dataFile = SD.open("datalog.txt", FILE_WRITE);
 
   if (millis() - lastGasTime >= gasInterval) {
-  digitalWrite(19, HIGH); // sets the digital pin 13 on
+  digitalWrite(9, HIGH); // sets the digital pin 13 on
   
     if (dataFile) {
 
@@ -156,7 +158,7 @@ void loop() {
       ppm1av = ppm1av/20;
       concentrationav = concentrationav/50;       
       
-        digitalWrite(19, LOW);
+        digitalWrite(9, LOW);
             if (dataFile) {
 
     dataFile.println(myTime + delim +event1.acceleration.x+ delim + event1.acceleration.y+ delim + event1.acceleration.z+ delim+ event.magnetic.x+ delim + event.magnetic.y+ delim + event.magnetic.z+ delim+ volts + delim + temp + delim + humd+ delim + ppmav + delim + ppm1av +delim +concentrationav);
