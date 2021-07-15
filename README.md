@@ -12,4 +12,4 @@ Below circuit shows how you can use multiple analog 5V sensors using a 3.3V micr
 
 
 
-The developed program reads and stores the data of motion and temperature sensors continuously. We read the gas sensors once in a while by using digital pin 12 which enables TPS61023 chip. We turn on the gas sensors and wait for 5 minutes (Gas sensors need this time so their output could become stable) and then we store their values.  
+The developed program reads and stores the data of motion and temperature sensors continuously. We read the gas sensors outputs once in a while by using digital pin 12 which enables TPS61023. We turn on the gas sensors and wait for 5 minutes (Gas sensors need this time so their output could become stable) and then we store the values.  
