@@ -9,7 +9,7 @@ Another challenge is to shift 5V output of the sensors to 3.3V for the microcont
 The above equation computes the voltage that we feed to the microcontroller. Vout will be 3.3V if Vin(sensor output) is equal to 5V. However, we need to check out the datasheet of the sensors to know the exact output range of each sensor. For instance, while the infrared CO2 sensor gets 5V power supply, it generates 0.4-2V analog value, corresponding to 0~5000 ppm. Therefore, we do not need a voltage divider for this sensor and we can just directly connect the output pin to the 3.3V microcontroller.
 Below circuit shows how you can use multiple analog 5V sensors using a 3.3V microcontroller. The components are TPS61023 (Adafruit MiniBoost 5V @ 1A), MQ137 and MQ135 Gas Sensors, Gravity Infrared CO2 Sensor, LSM303 Motion sensor, SHT20 I2C temperature sensor, 500mAh 3.7V Lipo Battery, four resistors, and Adafruit Feather M0 Adalogger. We can turn the gas sensors on by activating TPS61023 which can be done through pin 12. We utilized TPS61023 like a Mosfet transistor which is also capable of boosting the voltage up to 5V. We also need to ensure that power-hungry sensors are supplied directly through battery and TPS61023. This can be done by placing the sensors close to the battery and connect them directly to the TPS61023 (follow the gnd and vcc of the gas sensors in the circuit). We need to be careful because if we pass that kind of current through microcontroller board, it will damage the board!
 
-![githubv4](https://user-images.githubusercontent.com/45086751/125672955-8b26df32-c16b-4bf8-b240-8143354b2fd6.jpg)
+![githubv5](https://user-images.githubusercontent.com/45086751/125892856-0bb11355-6390-47eb-a019-555b48dbdef8.jpg)
 
 
 
