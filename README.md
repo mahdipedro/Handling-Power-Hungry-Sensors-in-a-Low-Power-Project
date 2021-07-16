@@ -13,7 +13,8 @@ Below circuit shows how you can use multiple analog 5V sensors using a 3.3V micr
 
 
 
-The developed program reads and stores the data of microphone, motion and temperature sensors continuously. We read the gas sensors outputs once in a while by using digital pin 12 which enables TPS61023. We turn on the gas sensors every 30 minutes and wait for 5 minutes (Gas sensors need this time so their output could become stable) and then we store the values. This can be done by using millis() function which gives us the number of milliseconds passed since the Arduino board began running the current program.
+The developed program reads and stores the data of microphone, motion and temperature sensors continuously. However, we may not use microphone all the time so we connect its Vdd to pin A3 to turn it on and off if needed. Microphone requires [3mA current](https://learn.adafruit.com/adafruit-agc-electret-microphone-amplifier-max9814/overview) which can be taken care of by the microcontroller board. Because we know from the [SAMD21 microcontroller data sheet](https://cdn-learn.adafruit.com/assets/assets/000/046/243/original/adafruit_products_Feather_M0_Adalogger_v2.2-1.png?1504885273) that each pin can provide a costant current of 7mA safely.
+We read the gas sensors outputs once in a while by using digital pin 12 which enables TPS61023. We turn on the gas sensors every 30 minutes and wait for 5 minutes (Gas sensors need this time so their output could become stable) and then we store the values. This can be done by using millis() function which gives us the number of milliseconds passed since the Arduino board began running the current program.
 
 
 ```
