@@ -18,7 +18,7 @@ The developed program reads and stores the data of motion and temperature sensor
 
 
 ```
-const int gasInterval = 1800000;
+const int gasInterval = 1800000; 
 unsigned long lastGasTime = 0;
 const int gasReading =2100000;
 
