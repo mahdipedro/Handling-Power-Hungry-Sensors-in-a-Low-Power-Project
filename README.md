@@ -23,7 +23,8 @@ const int gasInterval1 =2100000;
 
 if (millis() - lastGasTime >= gasInterval) { 
 
-      if (millis() - lastGasTime >= gasReading) {  
+   if (millis() - lastGasTime >= gasReading) {  
+      
    lastGasTime = millis(); // go to the next cycle
        }
  }
