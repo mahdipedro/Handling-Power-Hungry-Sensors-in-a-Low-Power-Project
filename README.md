@@ -17,7 +17,7 @@ Below circuit shows how you can use multiple analog 5V sensors using a 3.3V micr
 The developed program reads and stores the data of motion and temperature sensors continuously. We read the gas sensors outputs once in a while by using digital pin 12 which enables TPS61023. We turn on the gas sensors every 30 minutes and wait for 5 minutes (Gas sensors need this time so their output could become stable) and then we store the values. This can be done by using millis() function which gives us the number of milliseconds passed since the Arduino board began running the current program.
 //GasInterval is the time that we set to wake up the sensors (in this case it is every 30 minutes or 1800000 ms)
 //gasReading is the time that we sample the sensor. gasReading - gasInterval = time that we wait before sampling sensor (in this case it is 300000ms which is 5 minutes)
-
+```
 unsigned long lastGasTime = 0;
 const int gasInterval1 =2100000;
 
@@ -28,4 +28,4 @@ if (millis() - lastGasTime >= gasInterval) {
    lastGasTime = millis(); // go to the next cycle
        }
  }
-
+```
