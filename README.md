@@ -23,9 +23,9 @@ const int gasInterval1 =2100000;
 if (millis() - lastGasTime >= gasInterval) { //GasInterval is the time that we set to wake up the sensors (in this case it is every 30 minutes or 1800000 ms)
       // What you want to do when the sensors are on
    
-      if (millis() - lastGasTime >= gasReading) {  //gasReading is the time that we sample the sensor. gasReading - gasInterval = time that we wait before sampling sensor (in this case it is 300000ms which is 5 minutes)
-      // What you want to do when it is time to read the sensors values
-      lastGasTime = millis(); // go to the next cycle
+   if (millis() - lastGasTime >= gasReading) {  //gasReading is the time that we sample the sensor. gasReading - gasInterval = time that we wait before sampling sensor (in this case it is 300000ms which is 5 minutes)
+   // What you want to do when it is time to read the sensors values
+   lastGasTime = millis(); // go to the next cycle
       }
  }
 
